@@ -1,6 +1,6 @@
 # conversao-temperatura-k8s
 
-- Criando o cluter com kind
+- Criando o cluster com kind
 
 kind create cluster --name meucluster --config cluster.yaml
 
