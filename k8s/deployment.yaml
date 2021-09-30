@@ -1,0 +1,34 @@
+# Deployment do aplicação conversão-temperatura
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-conversao-temperatura
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-conversao-temperatura
+  template:
+    metadata:
+      labels:
+        app: app-conversao-temperatura
+    spec:
+      containers:
+        - name: app-conversao-temperatura
+          image: israeldoamaral/conversao-temperatura:v2
+          ports:
+            - containerPort: 8080
+---
+# Service da aplicação
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-conversao-temperatura
+spec:
+  selector:
+    app: app-conversao-temperatura
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30000
+  type: NodePort  
