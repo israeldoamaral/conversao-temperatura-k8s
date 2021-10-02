@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app-conversao-temperatura
-          image: israeldoamaral/conversao-temperatura:v2
+          image: israeldoamaral/conversao-temperatura-k8s:v1
           ports:
             - containerPort: 8080
 ---
@@ -31,4 +31,5 @@ spec:
     - port: 80
       targetPort: 8080
       nodePort: 30000
-  type: NodePort  
+  type: LoadBalancer  
+  #type: NodePort  
